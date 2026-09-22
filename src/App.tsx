@@ -1,8 +1,7 @@
 import { useEffect, useReducer } from 'react'
-import { ImportCard } from './components/ImportCard'
+import { PageSelection } from './components/PageSelection'
 import { DesignComplexity } from './components/DesignComplexity'
 import { StyleSelector } from './components/StyleSelector'
-import { PageCountAndEffort } from './components/PageCountAndEffort'
 import { AddonsChecklist } from './components/AddonsChecklist'
 import { CustomSoftwareSection } from './components/CustomSoftwareSection'
 import { RateSettings } from './components/RateSettings'
@@ -31,11 +30,13 @@ function App() {
 
       <main className="max-w-6xl mx-auto px-6 py-8 pb-24 lg:pb-8 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 items-start">
         <div className="space-y-5">
-          <ImportCard onApply={(result) => dispatch({ type: 'APPLY_IMPORT', result })} />
-
-          <PageCountAndEffort
-            pageCount={state.pageCount}
-            onPageCount={(value) => dispatch({ type: 'SET_PAGE_COUNT', value })}
+          <PageSelection
+            selectedPageIds={state.selectedPageIds}
+            onTogglePage={(id) => dispatch({ type: 'TOGGLE_PAGE', id })}
+            customPages={state.customPages}
+            onAddCustomPage={(name) => dispatch({ type: 'ADD_CUSTOM_PAGE', name })}
+            onRemoveCustomPage={(index) => dispatch({ type: 'REMOVE_CUSTOM_PAGE', index })}
+            pageCount={breakdown.pageCount}
           />
 
           <AddonsChecklist
@@ -71,7 +72,7 @@ function App() {
         <PriceSummary state={state} breakdown={breakdown} onReset={() => dispatch({ type: 'RESET' })} />
       </main>
 
-      <MobilePriceBar total={breakdown.total} />
+      <MobilePriceBar total={breakdown.total} monthly={breakdown.recurringMonthlyPrice} />
     </div>
   )
 }
