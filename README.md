@@ -91,3 +91,14 @@ aber fehlten:
 Die AI-gestützte Referenz-Website-Analyse (Backend + Anthropic API) wurde
 wieder entfernt, da sie einen laufenden API-Key/Guthaben vorausgesetzt hätte.
 Die App ist jetzt reines Frontend ohne externe Abhängigkeiten.
+
+### Anpassung 2026-10-01
+
+- **Position 09 (Decap CMS) entfernt.** Kunden hosten auf eigenem klassischem
+  Webspace (z. B. IONOS, Strato, All-Inkl), damit Kunde und HWA voneinander
+  unabhängig bleiben. Ein CMS bräuchte dort ein passendes Backend und laufende
+  Sicherheitsupdates – das widerspricht dem Ansatz „Übergabe ohne Wartungspflicht“.
+- **Position 13 (DSGVO-Grundausstattung) präzisiert:** HWA bindet Cookie-Banner
+  und Rechtstexte technisch ein, die Inhalte liefert der Kunde (Generator oder
+  Anwalt). Keine Rechtsberatung.
+
